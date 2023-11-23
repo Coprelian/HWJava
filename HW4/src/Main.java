@@ -36,17 +36,14 @@ public class Main {
         }
 
         try {
-            Random random = new Random();
             BufferedReader reader = new BufferedReader(new FileReader("HW4/poem.txt"));
             String line = reader.readLine();
             Queue<String> queue = new LinkedList<>();
-            long delay = random.nextLong(1000L,3000L);
 
             while (line != null)
             {
                 queue.add(line);
-                Thread.sleep(delay);
-                System.out.println(queue.poll());
+                printLineOut(queue.poll());
                 line = reader.readLine();
             }
             reader.close();
@@ -54,5 +51,12 @@ public class Main {
         catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    public static void printLineOut(String line) throws InterruptedException {
+        Random random = new Random();
+        long delay = random.nextLong(1000L,3000L);
+        System.out.println(line);
+        Thread.sleep(delay);
     }
 }
